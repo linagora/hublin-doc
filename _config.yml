@@ -1,0 +1,68 @@
+# ----
+# Site
+
+title: Hubl.in Documentation
+url: "https://openpaas.github.io/hublin-doc"
+repository: "linagora/hublin-doc.git"
+baseurl:
+google_analytics_key:
+show_full_navigation: true
+
+# Values for the jekyll-seo-tag gem (https://github.com/jekyll/jekyll-seo-tag)
+logo: /siteicon.png
+description: Hublin Documentation
+author:
+  name: Hublin Developers
+  email:
+  twitter: awesomepaas
+social:
+  name: Hublin Developers
+  links:
+    - https://github.com/linagora/hublin-doc
+
+# -----
+# Build
+
+permalink: pretty
+
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-feed
+  - replace_regex
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - LICENCE
+
+collections:
+  docs:
+    title: Documentation
+    permalink: /:path/
+    output: true
+
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      layout: default
+  -
+    scope:
+      path: ""
+      type: "docs"
+    values:
+      seo:
+        type: Article
+      _comments:
+        category: Group navigation links with this field
+        order: Used to sort links in the navigation
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      _comments:
+        type: Marks the impact of this release

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="generator" content="Jekyll v{{ jekyll.version }}">
+
+		<link href="https://fonts.googleapis.com/css?family=Roboto|Inconsolata:400,700" rel="stylesheet">
+		<link rel="stylesheet" href="{{ site.baseurl }}/css/modules/bootstrap.css">
+		<link rel="stylesheet" href="{{ site.baseurl }}/css/modules/font-awesome-4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="{{ site.baseurl }}/css/main.css">
+		<link rel="stylesheet" href="{{ site.baseurl }}/css/modules/viewer.min.css">
+		<link rel="stylesheet" href="{{ site.baseurl }}/css/overrides.css">
+		<link rel="apple-touch-icon" sizes="180x180" href="{{ site.baseurl }}/images/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="{{ site.baseurl }}/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="{{ site.baseurl }}/images/favicon-16x16.png">
+		<link rel="manifest" href="{{ site.baseurl }}/images/manifest.json">
+		<link rel="mask-icon" href="{{ site.baseurl }}/images/safari-pinned-tab.svg" color="#5bbad5">
+		<link rel="shortcut icon" href="{{ site.baseurl }}/images/favicon.ico">
+		<meta name="msapplication-config" content="{{ site.baseurl }}/images/browserconfig.xml">
+		<meta name="theme-color" content="#ffffff">
+
+		<script src="{{ site.baseurl }}/js/modules/jquery-2.2.0.min.js"></script>
+		<script src="{{ site.baseurl }}/js/modules/bootstrap.min.js"></script>
+		<script src="{{ '/js/modules/viewer.min.js' | prepend: site.baseurl }}"></script>
+
+		<title>{% if page.title %} {{ page.title }} | {% endif %} Hubl.in documentation</title>
+		{% feed_meta %}
+
+		{% if jekyll.environment == 'production' and site.google_analytics_key != '' %}
+			<script>
+				(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){
+				(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+				m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+				})(window,document,"script","//www.google-analytics.com/analytics.js","ga");
+
+				ga("create", "{{ site.google_analytics_key }}", "auto");
+				ga("send", "pageview");
+			</script>
+		{% endif %}
+	</head>
+
+	<body>
+		<header>
+			<h1>
+				<a href="{{ site.baseurl }}/"><img src="{{ site.baseurl }}/images/white-logo.png" width="40" height="40" alt="{{ site.title }} logo"></a>
+				{{ site.title }}
+				<button type="button" class="open-nav" id="open-nav"></button>
+			</h1>
+
+			<form action="{{ site.baseurl }}/search/" method="get">
+				<input type="text" name="q" id="search-input" placeholder="Search" autofocus>
+				<input type="submit" value="Search" style="display: none;">
+			</form>
+
+			<nav {% if site.show_full_navigation %}class="full-navigation"{% endif %}>
+				<ul>
+					<li class="nav-item top-level {% if page.url == '/' %}current{% endif %}">
+						{% assign home = site.html_pages | where: 'url', '/' | first %}
+						<a href="{{ site.baseurl }}/">{{ home.title }}</a>
+					</li>
+				</ul>
+
+				<ul>
+					{% assign grouped = site.docs | group_by: 'category' | sort: 'name' %}
+					{% for group in grouped %}
+						<li class="nav-item top-level {% if group.name == page.category %}current{% endif %}">
+							{% assign items = group.items | sort: 'order' %}
+							<a href="{{ site.baseurl }}{{ items.first.url }}">{{ group.name | replace_regex: '^[0-9]+\. ', '' }}</a>
+							<ul>
+								{% for item in items %}
+									<li class="nav-item {% if item.url == page.url %}current{% endif %}"><a href="{{ site.baseurl }}{{ item.url }}">{{ item.title }}</a></li>
+								{% endfor %}
+							</ul>
+						</li>
+					{% endfor %}
+				</ul>
+
+				<ul>
+					<li class="nav-item top-level">
+						<a href="javascript:;">Keep In Touch</a>
+						<ul>
+							<li class="nav-item">
+								<a href="https://twitter.com/AwesomePaaS">@AwesomePaaS on Twitter</a>
+							</li>
+							<li class="nav-item">
+								<a href="https://www.facebook.com/AwesomePaaS/">AwesomePaaS on Facebook</a>
+							</li>
+							<li class="nav-item">
+								<a href="https://github.com/linagora/hublin/">Github</a>
+							</li>
+							<li class="nav-item">
+								<a href="https://hubl.in/">Web Site</a>
+							</li>
+							<li class="nav-item">
+								<a href="https://linagora.com/">Linagora</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+
+
+			</nav>
+		</header>
+		<section class="main">
+			<div class="page-header">
+				<h2>{% if page.category %}{{ page.category | replace_regex: '^[0-9]+\. ', '' }}{% else %}{{ site.title }}{% endif %}</h2>
+				<div class="page-title">
+					<h3>{{ page.title }}</h3>
+					<a href="https://github.com/linagora/hublin-doc/edit/master/{{ page.path }}" title="Edit this page on Github">
+						<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+					</a>
+				</div>
+			</div>
+			<article class="content">
+				{{ content }}
+			</article>
+		</section>
+
+		<script>
+			var content = document.getElementsByClassName('content')[0];
+
+			if (content) {
+				var viewer = new Viewer(content, {
+					movable: false,
+					rotatable: false
+				});
+
+				var images = content.getElementsByTagName('img');
+				for (var i = 0; i < images.length; i++) {
+					images[i].style.cursor = 'pointer';
+				}
+			}
+
+			document.getElementById("open-nav").addEventListener("click", function () {
+				document.body.classList.toggle("nav-open");
+			});
+		</script>
+	</body>
+</html>
