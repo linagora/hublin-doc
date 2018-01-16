@@ -14,10 +14,10 @@ $ cd hublin-doc
 The Web site is built using [jekyll](https://jekyllrb.com/). You can install jekyll, all its dependencies, cry, or simply run in Docker:
 
 ```
-docker run --rm --label=jekyll --volume=$(pwd):/srv/jekyll -it -p 4000:4000 jekyll/jekyll jekyll serve
+docker run --rm --label=jekyll --volume=$(pwd):/site -it -p 4000:4000 -p35729:35729 linagora/jekyll-serve
 ```
 
-Open the browser on http://localhost:4000. Once some changes on the sources are detected, Jekyll will rebuild the Web site, you will just have to refresh your browser to get the new page.
+Open the browser on http://localhost:4000. Once some changes on the sources are detected, Jekyll will rebuild the site and reload the Web page.
 
 ### Tips and Tricks
 

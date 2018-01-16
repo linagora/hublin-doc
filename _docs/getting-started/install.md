@@ -8,6 +8,5 @@ order: 1
 We assume that you already have Git installed on your machine. Run the following commands:
 
 ```shell
-$ git https://github.com/linagora/hublin.git
-$ cd hublin
+git clone https://github.com/linagora/hublin.git && cd hublin
 ```
