@@ -2,12 +2,12 @@
 
 [![Build Status](https://ci.linagora.com/linagora/lgs/openpaas/hublin-doc/badges/master/build.svg)](https://ci.linagora.com/linagora/lgs/openpaas/hublin-doc/)
 
-This is the documentation repository for [https://linagora.github.io/hublin-doc](https://docs.open-paas.org).
+This is the documentation repository for [https://linagora.github.io/hublin-doc](https://linagora.github.io/hublin-doc).
 
 ## Develop
 
 ```
-$ git clone https://ci.linagora.com/linagora/lgs/openpaas/hublin-doc.git
+$ git clone https://github.com/linagora/hublin-doc.git
 $ cd hublin-doc
 ```
 
@@ -50,6 +50,6 @@ The category `Quick start` then has order 1.
 
 Please send your changes as pull-requests following the Hublin coding rules.
 
-### Push changes on docs.open-paas.org
+### Push changes on https://linagora.github.io/hublin-doc
 
 You have nothing to do... Once your code has been merged into master, the repository is built on Gitlab then deployed to `gh-pages` branch on [GitHub repository](https://github.com/linagora/hublin-doc). The Github Pages then serves the static content from `gh-pages` branch.
