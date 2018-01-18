@@ -1,7 +1,7 @@
 ---
 title: Get started with Docker
-category: 1. Getting started
-order: 1
+category: Getting started
+order: 2
 ---
 
 The easiest way to try Hubl.in on your local machine is to use [Docker Compose](https://docs.docker.com/compose/).

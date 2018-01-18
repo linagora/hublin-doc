@@ -1,6 +1,6 @@
 ---
 title: Installation
-category: 1. Getting started
+category: Getting started
 order: 1
 ---
 
