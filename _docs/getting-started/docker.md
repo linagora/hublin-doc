@@ -14,8 +14,8 @@ wget https://raw.githubusercontent.com/linagora/hublin/master/docker-compose.yml
 git clone --depth=1 https://github.com/linagora/hublin.git && cd hublin
 
 # launch it!
-docker-compose up
+docker-compose up --no-build
 ```
 
-Launching the application may take some time if you do not have the required Docker images, grab a cup of ☕️ and when
+Launching the application may take some time if you do not have the required Docker images locally, grab a cup of ☕️ and when
 it is ready you can access to the application at [http://localhost:8080](http://localhost:8080).
