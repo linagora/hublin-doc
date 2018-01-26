@@ -7,8 +7,27 @@ order: 3
 * Here is the ToC, this line is needed to generate...
 {:toc}
 
+- Database configuration (MOngoDB connection) can be updated in the `config/db.json` file
 - Local configuration can be updated in the `config` folder
 - Global configuration (shared between nodes), can be updated in the `configuration` collection in the MongoDB database
+
+## Database configuration
+
+Hublin needs MongoDB to run. The MongoDB connection can be configured from the `config/db.json` file.
+
+First, copy `db.json.sample` to `db.json`
+
+```
+cp db.json.sample db.json
+```
+
+Update the JSON document to fit your needs. By default, it is configured to connect to default host and port with a `hublin` database as defined in:
+
+``` json
+{
+  "connectionString": "mongodb://localhost:27017/hublin"
+}
+```
 
 ## Local configuration
 
