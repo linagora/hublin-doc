@@ -10,6 +10,100 @@ order: 3
 - Local configuration can be updated in the `config` folder
 - Global configuration (shared between nodes), can be updated in the `configuration` collection in the MongoDB database
 
+## Local configuration
+
+All the configuration which is related to the current hublin instance can be changed from the [config/default.json](https://github.com/linagora/hublin/blob/master/config/default.json) file.
+
+### WebRTC
+
+WebRTC settings can be changed from the `webrtc` sub document defined like:
+
+```
+"webrtc": {
+  "enabled": true,
+  "level": "debug",
+  "roomNameRegExp": "^.{1,64}$",
+  "usernameRegExp": "^(.){1,200}$",
+  "adapter": "hublin.janus.connector"
+}
+```
+
+While most of the settings can be kept as is, the `adapter`one is the most important. It allows to choose the adapter to use to provide the WebRTC communication channels. Possible values are:
+
+- **hublin.easyrtc.connector**
+- **hublin.janus.connector**
+
+For more details about adapters, take a look at the [adapters page](/getting-started/adapters)
+
+### Loggers
+
+Loggers can be configured in the config/default.*.json file:
+
+- In the loggers array: Configure the core logger.
+- In the loggers array of the webserver: Configure the webserver layer logger.
+
+Note: Loggers are following the [Winston](https://github.com/winstonjs/winston) logger format.
+
+A logger must have a name and a hash of options to use.
+
+```
+    {
+      "name": "File",
+      "enabled": true,
+      "options": {
+        "filename": "./log/application.log",
+        "level": "info",
+        "handleExceptions": true,
+        "json": false,
+        "prettyPrint": true,
+        "colorize": false
+      }
+    }
+```
+
+A logger can be enabled or not (a logger added to the array without the enabled flag will not be active).
+
+Winston allows to use external 'transports'. In order to use it, you must:
+
+1. Install it locally using 'npm install'
+2. Add it to the array
+3. Define which is the module to be loaded to use this transport by setting the 'module' value
+4. Use the right name. The name is used to build the function to be used as transport.
+
+For example, if you want to use the [Mail Transport](https://github.com/winstonjs/winston#mail-transport), you will have to define it in the configuration like:
+
+```
+    {
+      "name": "Mail",
+      "enabled": "true",
+      "module": "winston-mail",
+      "options": {
+        "to": "fail@hubl.in",
+        "host": "smtp@hubl.in",
+        "port": 587,
+        "username": "admin",
+        "password": "secret",
+        "ssl": {
+          "key": "",
+          "ca": "",
+          "cert": ""
+        },
+        "level": "error",
+        "silent": true
+      }
+    }
+```
+
+Based on this configuration, Hubl.in will build the transport to add to Winston instance like:
+
+```
+const mail = require('winston-mail');
+const Transports = mail[logger.name];
+
+// Which is equivalent to
+const Mail = require('winston-mail').Mail;
+```
+
 ## Global configuration
 
 ### Mail
@@ -87,72 +181,3 @@ Hubl.in allows to configure the Ice servers to be used when launching conference
   ]
 }
 ```
-
-## Local configuration
-
-### Loggers
-
-Loggers can be configured in the config/default.*.json file:
-
-- In the loggers array: Configure the core logger.
-- In the loggers array of the webserver: Configure the webserver layer logger.
-
-Note: Loggers are following the [Winston](https://github.com/winstonjs/winston) logger format.
-
-A logger must have a name and a hash of options to use.
-
-```
-    {
-      "name": "File",
-      "enabled": true,
-      "options": {
-        "filename": "./log/application.log",
-        "level": "info",
-        "handleExceptions": true,
-        "json": false,
-        "prettyPrint": true,
-        "colorize": false
-      }
-    }
-```
-
-A logger can be enabled or not (a logger added to the array without the enabled flag will not be active).
-
-Winston allows to use external 'transports'. In order to use it, you must:
-
-1. Install it locally using 'npm install'
-2. Add it to the array
-3. Define which is the module to be loaded to use this transport by setting the 'module' value
-4. Use the right name. The name is used to build the function to be used as transport.
-
-For example, if you want to use the [Mail Transport](https://github.com/winstonjs/winston#mail-transport), you will have to define it in the configuration like:
-
-```
-    {
-      "name": "Mail",
-      "enabled": "true",
-      "module": "winston-mail",
-      "options": {
-        "to": "fail@hubl.in",
-        "host": "smtp@hubl.in",
-        "port": 587,
-        "username": "admin",
-        "password": "secret",
-        "ssl": {
-          "key": "",
-          "ca": "",
-          "cert": ""
-        },
-        "level": "error",
-        "silent": true
-      }
-    }
-```
-
-Based on this configuration, Hubl.in will build the transport to add to Winston instance like:
-
-    var mail = require('winston-mail');
-    var Transports = mail[logger.name];
-
-    # Which is equivalent to
-    var Mail = require('winston-mail').Mail;
