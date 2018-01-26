@@ -7,6 +7,8 @@ order: 2
 * Here is the ToC, this line is needed to generate...
 {:toc}
 
+## Docker Compose
+
 The easiest way to try Hubl.in on your local machine is to use [Docker Compose](https://docs.docker.com/compose/).
 We assume that you already have Docker Compose installed on your machine. Run the following commands:
 
