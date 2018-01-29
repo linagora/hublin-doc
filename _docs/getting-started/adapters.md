@@ -14,7 +14,7 @@ Hublin is built on top of a modular system where modules can be plugged on both 
 - [hublin-easyrtc-connector](https://github.com/linagora/hublin-easyrtc-connector) is based on the [easyRTC](https://easyrtc.com/products/easyrtc/) library on both backend and frontend. It provides a fully P2P conference system.
 - [hublin-janus-connector](https://github.com/linagora/hublin-janus-connector) is using [Janus WebRTC Gateway](https://janus.conf.meetecho.com/). It provides more features, allow more users to join a conference but is more complex to deploy and configure.
 
-Both modules are available in the Hublin platform but they are not both activated/configured. You can choose the connector to use with local configuration as defined [here](/getting-started/configuration) and customize them as defined below.
+Both modules are available in the Hublin platform but they are not both activated/configured. You can choose the connector to use with local configuration as defined [here]({{ site.baseurl }}{% link /getting-started/configuration.md %}) and customize them as defined below.
 
 ## Using easyRTC
 
@@ -28,9 +28,9 @@ Using Janus adapter is more complex but provides more features and more attendee
 
 ### Installation
 
-Janus adapter is already provided in Hublin. you 'just' have to define that you want to use it from [local configuration](/getting-started/configuration).
+Janus adapter is already provided in Hublin. you 'just' have to define that you want to use it from [local configuration]({% link /getting-started/configuration.md %}).
 
-Instructions to install Janus are out of scope, please refer to the official Janus documentation for this or use [Docker and our Janus image](/getting-started/docker).
+Instructions to install Janus are out of scope, please refer to the official Janus documentation for this or use [Docker and our Janus image]({% link /getting-started/docker/md %}).
 
 ### Configuration
 

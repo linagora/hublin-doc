@@ -52,7 +52,7 @@ While most of the settings can be kept as is, the `adapter`one is the most impor
 - **hublin.easyrtc.connector**
 - **hublin.janus.connector**
 
-For more details about adapters, take a look at the [adapters page](/getting-started/adapters)
+For more details about adapters, take a look at the [adapters page]({% link /getting-started/adapters.md %})
 
 ### Loggers
 

@@ -6,5 +6,5 @@ title: Welcome
 
 ### Try Hublin
 
-Check out the [Get started](/getting-started/docker/) guide to try Hubl.in on your machine.
+Check out the [Get started]({{ site.baseurl }}{% link /getting-started/docker.md %}) guide to try Hubl.in on your machine.
 
