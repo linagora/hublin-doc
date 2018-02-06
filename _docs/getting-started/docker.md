@@ -27,9 +27,13 @@ it is ready you can access to the application at [http://localhost:8080](http://
 
 ## Docker Compose with Janus
 
-🚧
+You can launch all services including Janus from the root of the repository like:
 
-## Images
+``` shell
+git clone --depth=1 https://github.com/linagora/hublin.git && cd hublin
 
-- [hublin](https://hub.docker.com/r/linagora/hublin/) Hublin image, does not provide Mongo, Redis and all the required services but the runtime.
-- [janus-gateway](https://hub.docker.com/r/linagora/janus-gateway/) A Janus gateway image configured with everything needed to work with Hublin.
+# launch it!
+DOCKER_IP=<YOUR DOCKER IP> docker-compose -f docker-compose.yml -f docker-compose.janus.yml up
+```
+
+Additional information about how we use Docker is available in the [Docker Development page]({{site.baseurl}} {% link _docs/dev/docker.md %})
