@@ -23,7 +23,7 @@ Then install all the required dependencies
 npm install
 ```
 
-Once [configured]({% link /getting-started/configuration.md %}), and all services are up i.e. MongoDB, Redis, Janus (optional based on your requirements), you can start Hublin with
+Once [configured]({% link _docs/getting-started/configuration.md %}), and all services are up i.e. MongoDB, Redis, Janus (optional based on your requirements), you can start Hublin with
 
 ``` sh
 npm start
