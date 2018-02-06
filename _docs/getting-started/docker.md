@@ -25,6 +25,10 @@ docker-compose up --no-build
 Launching the application may take some time if you do not have the required Docker images locally, grab a cup of ☕️ and when
 it is ready you can access to the application at [http://localhost:8080](http://localhost:8080).
 
+## Docker Compose with Janus
+
+🚧
+
 ## Images
 
 - [hublin](https://hub.docker.com/r/linagora/hublin/) Hublin image, does not provide Mongo, Redis and all the required services but the runtime.
