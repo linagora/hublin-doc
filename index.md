@@ -8,3 +8,4 @@ title: Welcome
 
 Check out the [Get started]({{ site.baseurl }}{% link _docs/getting-started/docker.md %}) guide to try Hubl.in on your machine.
 
+![Hublin]({{ site.baseurl }} {% link /images/welcome.png })
