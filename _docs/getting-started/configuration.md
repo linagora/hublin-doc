@@ -200,3 +200,33 @@ Hubl.in allows to configure the Ice servers to be used when launching conference
   ]
 }
 ```
+
+### Janus endpoint
+
+Update or create the `scalability` document in the `configuration` collection and set the Janus endpoint like:
+
+``` javascript
+{
+    "_id" : "scalability",
+    "configuration" : [
+        {
+            "type": "janus",
+            "url" : "http://yourjanushost:8088"
+        }
+    ]
+}
+```
+
+or if over HTTPs (recommended)
+
+``` javascript
+{
+    "_id" : "scalability",
+    "configuration" : [
+        {
+            "type": "janus",
+            "url" : "https://yourjanushost:8089"
+        }
+    ]
+}
+```

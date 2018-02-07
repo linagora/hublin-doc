@@ -5,7 +5,7 @@ order: 1
 ---
 
 
-We assume that you already have Git installed on your machine. Run the following commands:
+We assume that you already have `git` installed on your machine. Run the following commands:
 
 ```shell
 git clone https://github.com/linagora/hublin.git && cd hublin
@@ -23,7 +23,7 @@ Then install all the required dependencies
 npm install
 ```
 
-Once [configured]({% link _docs/getting-started/configuration.md %}), and all services are up i.e. MongoDB, Redis, Janus (optional based on your requirements), you can start Hublin with
+Once [configured]({{site.baseurl}}{% link _docs/getting-started/configuration.md %}), and all services are up i.e. MongoDB, Redis, Janus (optional based on your requirements, check [Janus documentation]({{site.baseurl}}{% link _docs/getting-started/janus.md %})), you can start Hublin with
 
 ``` sh
 npm start
@@ -32,3 +32,5 @@ npm start
 
 node server.js
 ```
+
+**Note**: For more information on how to install MongoDB, Redis and Janus, please refer to their official documentation.
