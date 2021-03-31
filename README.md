@@ -1,3 +1,5 @@
+![Archived](https://img.shields.io/badge/Current_Status-archived-blue?style=flat)
+
 # Hublin Documentation website
 
 [![Build Status](https://ci.linagora.com/linagora/lgs/openpaas/hublin-doc/badges/master/build.svg)](https://ci.linagora.com/linagora/lgs/openpaas/hublin-doc/)
